@@ -114,7 +114,12 @@ public class Main implements ActionListener {
 	private File findGoogleDriveFolder() {
 		ArrayList<File> curFiles = new ArrayList<File>();
 
-		curFiles.add(new File("C:/"));
+		curFiles.add(new File("C:/")); //Windows base dir
+		
+		if (!curFiles.get(0).exists()) {
+			curFiles.clear();
+			curFiles.add(new File("/")); //MAC base dir
+		}
 
 		while (curFiles.size() > 0) {
 
