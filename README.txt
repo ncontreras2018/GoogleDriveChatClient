@@ -12,4 +12,3 @@ Click the JAR above to run the chat client.
 
 You MUST have the Google Drive Desktop Application installed, running, AND logged in.
 Additionally, you must have the shared files on Google Drive in order to connect.
-A "Server Not Found" error will occur if you do not.
