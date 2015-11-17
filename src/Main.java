@@ -32,8 +32,10 @@ public class Main implements ActionListener {
 			return;
 		}
 		
-		if (!setUpConnection()) {
-			JOptionPane.showMessageDialog(null, "The Server Could Not Be Found");
+		String connectionResult = setUpConnection();
+		
+		if (connectionResult != null) {
+			JOptionPane.showMessageDialog(null, connectionResult);
 			return;
 		}
 
@@ -144,20 +146,21 @@ public class Main implements ActionListener {
 		return null;
 	}
 
-	private boolean setUpConnection() {
+	private String setUpConnection() {
+		
 		File driveFolder = findGoogleDriveFolder();
 		
 		if (driveFolder == null) {
-			return false;
+			return "Connection Failed:\nGoogle Drive Folder Not Found";
 		}
 
 		file = new File(driveFolder.getAbsolutePath()
 				+ "/GoogleDriveChat/chat.txt");
 		
 		if (file == null || !file.exists()) {
-			return false;
+			return "Connection Failed:\nCould Not Connect With Server";
 		}
-		return true;
+		return null;
 	}
 
 	public String getChatRoom() {
